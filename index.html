@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="K1LLER VERSE — Toolkit Exploit WhatsApp, Spam Massal, dan RAT Control. Full access, no limits.">
+<title>K1LLER VERSE | Exploit Toolkit & RAT Control</title>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0b0f19;
+  --bg-2:#111827;
+  --bg-card:rgba(17, 24, 39, 0.8);
+  --bg-card-hover:rgba(31, 41, 55, 0.9);
+  --border:rgba(139, 92, 246, 0.2);
+  --border-glow:rgba(52, 211, 153, 0.5);
+  --text:#f8fafc;
+  --text-muted:#94a3b8;
+  --accent-green:#10b981;
+  --accent-mint:#34d399;
+  --accent-purple:#8b5cf6;
+  --accent-pink:#ec4899;
+  --gradient-primary:linear-gradient(135deg, #10b981, #8b5cf6);
+  --gradient-text:linear-gradient(90deg, #34d399, #a78bfa);
+  --radius-sm:8px;
+  --radius-md:12px;
+  --radius-lg:16px;
+  --radius-xl:24px;
+  --radius-pill:999px;
+  --font:'Inter', system-ui, -apple-system, sans-serif;
+  --transition:.3s cubic-bezier(.22,.68,.32,1);
+}
+
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  position:relative;
+}
+
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.container{max-width:1140px;margin:0 auto;padding:0 20px}
+.text-gradient{
+  background:var(--gradient-text);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.section-padding{padding:100px 0}
+.section-header{text-align:center;margin-bottom:56px}
+.section-header h2{font-size:clamp(24px, 4vw, 36px);font-weight:800;margin-bottom:16px;letter-spacing:-0.5px}
+.section-header p{color:var(--text-muted);max-width:600px;margin:0 auto;font-size:15px}
+.icon-box{
+  display:flex; align-items:center; justify-content:center;
+  width:48px; height:48px; border-radius:12px;
+  background:rgba(52, 211, 153, 0.1);
+  border:1px solid rgba(52, 211, 153, 0.25);
+  color:var(--accent-mint);
+  margin-bottom:20px;
+  transition:all var(--transition);
+}
+.icon-box svg{width:22px;height:22px}
+
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); will-change: opacity, transform; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  background:rgba(11, 15, 25, 0.85);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  transition: all 0.3s;
+}
+.nav.scrolled { background:rgba(11, 15, 25, 0.98); box-shadow: 0 4px 30px rgba(139, 92, 246, 0.15); }
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:72px;
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text)}
+.brand-icon{
+  width:38px;height:38px;border-radius:10px;
+  background:rgba(52,211,153,0.1);
+  border:1px solid rgba(52,211,153,0.4);
+  display:grid;place-items:center;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 15px rgba(52,211,153,0.3);
+}
+.brand-icon video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 9px;
+}
+.brand-text{display:flex;flex-direction:column;line-height:1.2}
+.brand-text strong{font-size:16px;font-weight:700}
+.brand-text span{font-size:9px;color:var(--accent-mint);letter-spacing:1.5px;font-weight:700;text-transform:uppercase}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{
+  text-decoration:none;color:var(--text-muted);font-size:14.5px;font-weight:500;
+  transition:color var(--transition);
+}
+.nav-links a:hover{color:var(--accent-mint);}
+.nav-actions{display:flex;gap:12px;align-items:center;}
+
+.nav-mobile-btn{
+  display:none; background:none; border:none; color:var(--accent-mint);
+  cursor:pointer; padding:8px; border-radius:8px; transition:background var(--transition);
+}
+.nav-mobile-btn:hover{background:rgba(52,211,153,0.1)}
+.nav-mobile-btn svg{width:28px;height:28px;}
+
+.nav-mobile-menu{
+  display:none; position:absolute; top:72px; left:0; right:0;
+  background:rgba(11, 15, 25, 0.98); backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border); flex-direction:column;
+  box-shadow:0 20px 40px rgba(0,0,0,0.6);
+}
+.nav-mobile-menu.open{display:flex}
+.nav-mobile-menu a{
+  color:var(--text); text-decoration:none; font-size:16px; font-weight:500;
+  padding:16px 24px; border-bottom:1px solid rgba(255,255,255,0.03);
+  transition:background var(--transition), color var(--transition);
+}
+.nav-mobile-menu a:hover{
+  background:rgba(52,211,153,0.05); color:var(--accent-mint); padding-left:32px;
+}
+
+.hero{
+  padding:160px 0 100px;
+  background:radial-gradient(ellipse 60% 50% at 50% -10%, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero .container{position:relative;z-index:2}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:8px 20px;border-radius:var(--radius-pill);
+  background:rgba(139, 92, 246, 0.1);border:1px solid rgba(139, 92, 246, 0.3);
+  color:var(--accent-purple);font-size:11px;font-weight:700;
+  margin-bottom:28px;letter-spacing:1.5px;text-transform:uppercase;
+}
+.hero-badge .dot{
+  width:6px;height:6px;border-radius:50%;background:var(--accent-purple);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(139,92,246,0.4)}70%{box-shadow:0 0 0 8px rgba(139,92,246,0)}100%{box-shadow:0 0 0 0 rgba(139,92,246,0)}}
+.hero h1{
+  font-size:clamp(32px, 5vw, 56px);
+  font-weight:800;letter-spacing:-1.5px;line-height:1.1;
+  margin-bottom:24px;max-width:960px;margin-inline:auto;
+}
+.hero p{
+  font-size:clamp(16px, 2vw, 18px);
+  color:var(--text-muted);max-width:700px;margin:0 auto 40px;
+  line-height:1.8;
+}
+.hero-buttons{
+  display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px;
+}
+.btn-primary{
+  background:var(--gradient-primary);color:#fff;
+  padding:15px 32px;border-radius:var(--radius-md);
+  font-weight:700;font-size:15px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;
+  transition:all var(--transition);border:none;cursor:pointer;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.4);
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(52, 211, 153, 0.5)}
+.btn-secondary{
+  background:rgba(52,211,153,0.05);color:var(--accent-mint);
+  padding:15px 32px;border-radius:var(--radius-md);
+  font-weight:600;font-size:15px;text-decoration:none;
+  display:inline-flex;align-items:center;gap:10px;
+  border:1px solid rgba(52,211,153,0.3);transition:all var(--transition);
+}
+.btn-secondary:hover{background:rgba(52,211,153,0.1);border-color:var(--accent-mint);}
+
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  margin-top:60px;text-align:left;
+}
+.stat-card{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:24px;transition:all var(--transition); backdrop-filter: blur(10px);
+}
+.stat-card:hover{transform:translateY(-4px);border-color:var(--accent-purple); box-shadow: 0 10px 30px -10px rgba(139,92,246,0.3);}
+.stat-val{font-size:22px;font-weight:800;margin-bottom:6px;letter-spacing:-0.5px}
+.stat-lbl{font-size:13px;color:var(--text-muted);line-height:1.5}
+
+.philosophy{background:transparent;}
+.table-shell{
+  border:1px solid var(--border);border-radius:var(--radius-xl);
+  background:var(--bg-card);overflow:hidden; backdrop-filter: blur(10px);
+  box-shadow:0 20px 40px -20px rgba(0,0,0,0.6);
+}
+.table-head{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:20px 28px;border-bottom:1px solid var(--border);
+  background:rgba(139, 92, 246, 0.05);flex-wrap:wrap;gap:12px;
+}
+.table-head h3{font-size:16px;font-weight:700;display:flex;align-items:center;gap:10px}
+.table-tag{
+  font-size:11px;font-weight:700;padding:6px 14px;border-radius:var(--radius-pill);
+  background:rgba(52,211,153,0.1);color:var(--accent-mint);
+  border:1px solid rgba(52,211,153,0.3);letter-spacing:0.5px;text-transform:uppercase;
+}
+.table-scroll{overflow-x:auto}
+table.compare{width:100%;border-collapse:collapse;min-width:700px;font-size:14.5px}
+table.compare th,table.compare td{padding:20px 28px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+table.compare thead th{
+  font-size:11.5px;text-transform:uppercase;letter-spacing:1px;
+  font-weight:700;color:var(--text-muted);background:rgba(11,15,25,0.5);
+}
+table.compare thead th:nth-child(2){color:#fca5a5}
+table.compare thead th:nth-child(3){color:var(--accent-mint)}
+table.compare tbody tr:hover{background:rgba(139,92,246,0.05)}
+table.compare td:first-child{font-weight:600;color:var(--text);width:26%}
+table.compare td:nth-child(2){color:#fca5a5;width:37%}
+table.compare td:nth-child(3){color:#86efac;width:37%;font-weight:500}
+.cell-tag{display:inline-flex;align-items:center;gap:8px}
+.cell-tag svg{width:16px;height:16px;flex-shrink:0}
+.tag-x{color:#f87171}
+.tag-check{color:var(--accent-mint)}
+
+.phil-footer{
+  display:flex;align-items:flex-start;gap:16px;margin-top:32px;
+  padding:24px;border-radius:var(--radius-lg);
+  background:rgba(52,211,153,0.05);border:1px solid rgba(52,211,153,0.15);
+  font-size:14.5px;color:var(--text-muted);
+}
+.phil-footer svg{width:24px;height:24px;color:var(--accent-mint);flex-shrink:0}
+
+.features-grid{
+  display:grid;grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:24px;
+}
+.feature-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius-xl);padding:32px;
+  transition:all var(--transition);position:relative;overflow:hidden;
+  backdrop-filter: blur(10px);
+}
+.feature-card:hover{transform:translateY(-4px);background:var(--bg-card-hover);border-color:var(--accent-purple)}
+.feature-card:hover .icon-box{background:var(--gradient-primary);color:#fff;border-color:transparent;box-shadow: 0 0 15px rgba(139,92,246,0.4);}
+.feature-card h3{font-size:18px;font-weight:700;margin-bottom:12px;letter-spacing:-0.3px}
+.feature-card p{font-size:14.5px;color:var(--text-muted);line-height:1.7}
+
+.pricing-section{background:transparent;}
+.tab-container{display:flex;justify-content:center;gap:12px;margin-bottom:40px;flex-wrap:wrap}
+.tab-btn{
+  background:transparent;border:1px solid var(--border);
+  color:var(--text-muted);padding:12px 28px;border-radius:var(--radius-pill);
+  font-size:14px;font-weight:600;cursor:pointer;transition:all var(--transition);
+}
+.tab-btn.active{background:rgba(139,92,246,0.15);border-color:var(--accent-purple);color:var(--accent-purple)}
+.tab-btn:hover:not(.active){border-color:rgba(139,92,246,0.4);color:var(--text)}
+
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:20px}
+.price-card{
+  background:var(--bg-card);border:1px solid var(--border);
+  border-radius:var(--radius-xl);padding:32px 28px;
+  display:flex;flex-direction:column; backdrop-filter: blur(10px);
+  transition:all var(--transition);position:relative;overflow:hidden;
+}
+.price-card:hover{transform:translateY(-4px);border-color:var(--border-glow);box-shadow:0 15px 35px -15px rgba(139,92,246,0.4)}
+.price-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:var(--gradient-primary);opacity:0;transition:opacity var(--transition);
+}
+.price-card:hover::before{opacity:1}
+.price-card h3{font-size:14px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.price-card .price{font-size:38px;font-weight:800;color:var(--text);margin-bottom:4px;letter-spacing:-1.5px}
+.price-card .duration{font-size:14px;color:var(--accent-mint);font-weight:600;margin-bottom:28px}
+.price-card .features{list-style:none;margin-bottom:28px;flex-grow:1;display:flex;flex-direction:column;gap:12px}
+.price-card .features li{font-size:14px;color:var(--text-muted);display:flex;align-items:flex-start;gap:10px}
+.price-card .features li svg{width:18px;height:18px;color:var(--accent-mint);flex-shrink:0;margin-top:2px}
+.btn-buy{
+  width:100%;padding:14px;border-radius:var(--radius-md);
+  background:rgba(52,211,153,0.08);border:1px solid var(--border);
+  color:var(--accent-mint);font-weight:700;font-size:14px;cursor:pointer;transition:all var(--transition);
+}
+.price-card:hover .btn-buy{background:var(--gradient-primary);color:#fff;border-color:transparent;}
+.price-card.highlight{border-color:rgba(139,92,246,0.5);background:linear-gradient(180deg, rgba(139,92,246,0.1), var(--bg-card))}
+.price-card.highlight .btn-buy{background:var(--gradient-primary);color:#fff;border-color:transparent}
+.badge-popular{
+  position:absolute;top:20px;right:20px;background:var(--accent-purple);color:#fff;
+  font-size:10px;font-weight:800;padding:5px 12px;border-radius:var(--radius-pill);letter-spacing:0.5px;
+}
+.role-card { text-align: center; justify-content: center; align-items: center; padding: 40px 24px; }
+.role-card h3 { font-size: 18px; color: var(--text); margin-bottom: 8px; letter-spacing: 0; }
+.role-card .role-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+.role-card .price { font-size: 32px; margin-bottom: 28px; }
+.role-card .btn-buy { width: 80%; }
+
+.steps-section{background:transparent;}
+.steps-container{max-width:800px;margin:0 auto}
+.step-item{display:flex;gap:24px;padding:32px 0;border-bottom:1px solid var(--border);}
+.step-item:last-child{border-bottom:none}
+.step-number{font-size:20px;font-weight:800;color:var(--accent-purple);min-width:40px;padding-top:2px;}
+.step-content h3{font-size:20px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.step-content p{font-size:15px;color:var(--text-muted);line-height:1.7}
+.panduan-badge{
+  display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:var(--radius-pill);
+  border:1px solid rgba(139,92,246,0.4); color:var(--accent-purple);
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px;
+}
+
+.faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;transition:border-color var(--transition); backdrop-filter: blur(10px);}
+.faq-item.open{border-color:rgba(139,92,246,0.5);}
+.faq-q{
+  width:100%;padding:22px 28px;display:flex;align-items:center;justify-content:space-between;
+  gap:16px;font-size:15.5px;font-weight:600;color:var(--text);text-align:left;transition:color var(--transition);cursor:pointer;
+  background:transparent;border:none;
+}
+.faq-q:hover{color:var(--accent-purple)}
+.faq-icon{
+  width:28px;height:28px;border-radius:8px;flex-shrink:0;display:grid;place-items:center;
+  font-size:16px;font-weight:700;background:rgba(139,92,246,0.1);color:var(--accent-purple);
+  transition:transform var(--transition), background var(--transition);
+}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--accent-purple);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.22,0.68,0.32,1)}
+.faq-a-inner{padding:0 28px 24px;font-size:14.5px;color:var(--text-muted);line-height:1.8}
+.faq-item.open .faq-a{max-height:400px}
+
+.cta-band{
+  position:relative;overflow:hidden;border-radius:var(--radius-xl);padding:64px 44px;text-align:center;
+  background:radial-gradient(ellipse 80% 100% at 50% 0%, rgba(139,92,246,0.15), transparent 65%), var(--bg-card);
+  border:1px solid rgba(139,92,246,0.3);box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+}
+.cta-band h2{font-size:clamp(24px, 4vw, 36px);font-weight:800;letter-spacing:-1px;margin-bottom:16px}
+.cta-band p{color:var(--text-muted);max-width:580px;margin:0 auto 32px;font-size:16px}
+.cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+footer{border-top:1px solid var(--border);padding:40px 0;margin-top:60px;background:rgba(11,15,25,0.8);backdrop-filter: blur(10px);}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-brand p{font-size:14px;color:var(--text-muted);margin-top:12px;max-width:300px}
+.footer-links a{color:var(--text-muted);text-decoration:none;font-size:14px;margin-left:24px;transition:color var(--transition)}
+.footer-links a:hover{color:var(--accent-purple);}
+
+.modal-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(11, 15, 25, 0.95);
+  z-index: 2000;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.4s;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+}
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content {
+  max-width: 700px; margin: 0 auto; padding: 40px 20px 80px;
+  transform: translateY(30px);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.modal-overlay.active .modal-content { transform: translateY(0); }
+.modal-close {
+  position: fixed; top: 20px; right: 20px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,0.1); border: 1px solid var(--border);
+  color: var(--text); font-size: 20px; cursor: pointer;
+  display: grid; place-items: center; z-index: 2001;
+  transition: background 0.3s;
+}
+.modal-close:hover { background: rgba(248, 113, 113, 0.2); color: #f87171; }
+
+.payment-box {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 32px 24px; text-align: center;
+  box-shadow: 0 20px 40px -20px rgba(0,0,0,0.8);
+  max-width: 420px; margin: 0 auto;
+  backdrop-filter: blur(10px);
+}
+.payment-box h3 { font-size: 20px; font-weight: 800; margin-bottom: 8px; color: var(--text); }
+.payment-box .subtitle { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+.qris-image {
+  width: 100%; max-width: 280px; height: auto;
+  border-radius: 12px; border: 2px solid rgba(139,92,246,0.4);
+  margin: 0 auto 24px; display: block; background: #fff; padding: 10px;
+}
+.receiver-info {
+  background: rgba(139,92,246,0.05); border: 1px dashed rgba(139,92,246,0.3);
+  border-radius: var(--radius-md); padding: 16px; margin-bottom: 24px;
+  text-align: left;
+}
+.receiver-info p { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+.receiver-info h4 { font-size: 18px; font-weight: 700; color: var(--accent-purple); letter-spacing: 1px; }
+.receiver-info .amount { font-size: 22px; font-weight: 800; color: var(--text); margin-top: 8px; }
+.btn-send-proof {
+  width: 100%; padding: 16px; border-radius: var(--radius-md);
+  background: var(--gradient-primary); color: #fff;
+  font-weight: 800; font-size: 16px; text-decoration: none;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  transition: all var(--transition); border: none; cursor: pointer;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+.btn-send-proof:hover { transform: translateY(-2px); box-shadow: 0 8px 25px -6px rgba(52, 211, 153, 0.6); }
+
+.dev-photo-wrapper { display: flex; justify-content: center; margin-bottom: 24px; }
+.dev-photo {
+  width: 250px; height: 250px;
+  border-radius: 24px;
+  border: 3px dashed var(--accent-purple);
+  padding: 10px;
+  background: rgba(139,92,246,0.05);
+  position: relative;
+}
+.dev-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 16px; filter: grayscale(10%) contrast(105%); }
+.dev-badge-aktif {
+  position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%);
+  background: var(--bg-2); border: 1px solid var(--accent-purple); color: var(--accent-purple);
+  padding: 6px 16px; border-radius: var(--radius-pill); font-size: 11px; font-weight: 700;
+  display: flex; align-items: center; gap: 6px; white-space: nowrap;
+}
+.dev-profile-badge {
+  display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: var(--radius-pill);
+  border: 1px solid rgba(139,92,246,0.4); color: var(--accent-purple);
+  font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  margin: 30px auto 16px; width: max-content;
+}
+.dev-name { font-size: 32px; font-weight: 800; text-align: center; margin-bottom: 8px; }
+.dev-title { color: var(--accent-pink); text-align: center; font-weight: 600; margin-bottom: 24px; font-size: 15px; }
+.dev-desc { color: var(--text-muted); text-align: center; font-size: 15px; line-height: 1.8; margin-bottom: 40px; }
+
+.timeline { border-left: 2px solid var(--border); padding-left: 24px; margin-left: 10px; }
+.timeline-item { position: relative; margin-bottom: 32px; }
+.timeline-item::before {
+  content: ''; position: absolute; left: -31px; top: 4px;
+  width: 12px; height: 12px; border-radius: 50%; background: var(--accent-purple);
+  box-shadow: 0 0 10px rgba(139,92,246,0.4);
+}
+.timeline-item h4 { font-size: 18px; font-weight: 700; margin-bottom: 6px; }
+.timeline-item p { font-size: 14px; color: var(--text-muted); }
+
+.quote-box {
+  border-left: 3px solid var(--accent-purple); padding: 16px 20px;
+  background: rgba(139,92,246,0.05); border-radius: 0 12px 12px 0;
+  font-style: italic; margin-bottom: 40px; color: var(--text-muted);
+}
+.quote-box strong { display: block; margin-top: 12px; color: var(--accent-purple); font-style: normal; }
+
+.modal-title { font-size: 28px; font-weight: 800; margin-bottom: 24px; text-align: center; }
+.legal-section { margin-bottom: 32px; }
+.legal-section h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; color: var(--accent-purple); }
+.legal-section p, .legal-section ul { font-size: 14.5px; color: var(--text-muted); line-height: 1.8; }
+.legal-section ul { padding-left: 20px; margin-top: 8px; }
+.legal-section li { margin-bottom: 8px; }
+.contact-card {
+  display: flex; align-items: center; gap: 16px; padding: 20px;
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg);
+  margin-bottom: 16px; text-decoration: none; color: var(--text); transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+.contact-card:hover { border-color: var(--accent-purple); transform: translateY(-2px); background: var(--bg-card-hover);}
+.contact-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(139,92,246,0.1); color: var(--accent-purple); display: grid; place-items: center; }
+.contact-info h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+.contact-info p { font-size: 14px; color: var(--text-muted); }
+
+@media(max-width:960px){ .stats-grid{grid-template-columns:repeat(2,1fr)} }
+@media(max-width:768px){
+  .nav-links{display:none}
+  .nav-actions .btn-primary{display:none}
+  .nav-mobile-btn{display:block}
+  .hero{padding:120px 0 60px}
+  .hero-buttons{flex-direction:column}
+  .btn-primary, .btn-secondary{width:100%;justify-content:center}
+  .phil-footer{flex-direction:column;text-align:center;align-items:center}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-links a{margin:0 12px}
+  .section-padding{padding:60px 0}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr}
+  .cta-band{padding:40px 20px}
+  .price-card{padding:24px 20px}
+  .step-item{flex-direction:column;gap:12px}
+  .dev-photo{width: 200px; height: 200px;}
+}
+</style>
+</head>
+<body>
+
+<canvas id="particles-js"></canvas>
+
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="brand">
+      <div class="brand-icon">
+        <video autoplay loop muted playsinline>
+          <source src="https://files.catbox.moe/wsvvzs.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="brand-text">
+        <strong>K1LLER VERSE</strong>
+        <span>Exploit Toolkit</span>
+      </div>
+    </a>
+    
+    <div class="nav-links">
+      <a href="#hero">Beranda</a>
+      <a href="#fitur">Tools</a>
+      <a href="#filosofi">Tentang</a>
+      <a href="#harga">Langganan</a>
+      <a href="#faq">FAQ</a>
+    </div>
+
+    <div class="nav-actions">
+      <a href="#harga" class="btn-primary" style="padding:10px 20px; font-size:14px; border-radius:8px;">Beli Akses</a>
+      
+      <button class="nav-mobile-btn" id="navBtn" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  
+  <div class="nav-mobile-menu" id="navMenu">
+    <a href="#hero" class="menu-link">Beranda</a>
+    <a href="#fitur" class="menu-link">Tools</a>
+    <a href="#filosofi" class="menu-link">Tentang</a>
+    <a href="javascript:void(0)" class="menu-link open-modal" data-modal="modal-developer">Developer</a>
+    <a href="#artikel" class="menu-link">Artikel</a>
+    <a href="#harga" class="menu-link">Langganan</a>
+    <a href="javascript:void(0)" class="menu-link open-modal" data-modal="modal-legal">Legal</a>
+    <a href="javascript:void(0)" class="menu-link open-modal" data-modal="modal-kontak">Kontak</a>
+  </div>
+</nav>
+
+<header class="hero" id="hero">
+  <div class="container">
+    <div class="hero-badge reveal">
+      <span class="dot"></span>
+      TOOLKIT EXPLOIT WHATSAPP · SPAM · RAT CONTROL
+    </div>
+    <h1 class="reveal reveal-delay-1">Toolkit <span class="text-gradient">Exploit WhatsApp</span>, Spam Massal, dan RAT Control</h1>
+    <p class="reveal reveal-delay-2">K1LLER VERSE dibangun untuk operator yang butuh tool nyata: bug WhatsApp, spam massal, RAT control, pairing number, sampai monitoring chat. Semua dalam satu panel — no limits, no bullshit.</p>
+    
+    <div class="hero-buttons reveal reveal-delay-3">
+      <a href="#harga" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        Beli Akses
+      </a>
+      <a href="#" class="btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Toolkit
+      </a>
+      <a href="javascript:void(0)" class="btn-secondary open-modal" data-modal="modal-developer">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Kenalan dengan Developer
+      </a>
+    </div>
+    
+    <div class="hero-note reveal reveal-delay-3" style="display:flex;justify-content:center;gap:24px;font-size:13px;color:var(--text-muted);flex-wrap:wrap;margin-top:16px;">
+      <span style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-mint)" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Full Access</span>
+      <span style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-mint)" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> No Limits</span>
+      <span style="display:flex;align-items:center;gap:6px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-mint)" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg> Android 8.0+</span>
+    </div>
+  </div>
+</header>
+
+<section class="container" style="padding-bottom:40px;">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="stat-val text-gradient">Mass Spam</div>
+      <div class="stat-lbl">Spam pesan massal tanpa batas</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-1">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg></div>
+      <div class="stat-val text-gradient">Bug WA</div>
+      <div class="stat-lbl">Exploit WhatsApp terbaru</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-2">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+      <div class="stat-val text-gradient">RAT Control</div>
+      <div class="stat-lbl">Remote access full control</div>
+    </div>
+    <div class="stat-card reveal reveal-delay-3">
+      <div class="icon-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+      <div class="stat-val text-gradient">Realtime</div>
+      <div class="stat-lbl">Eksekusi tanpa delay</div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding philosophy" id="filosofi">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Tools nyata untuk operator nyata.</h2>
+      <p style="max-width:760px;">Banyak panel cuma jual tampilan kosong. K1LLER VERSE beda: setiap modul benar-benar bekerja — exploit WA, spam massal, RAT control, pairing number, monitoring chat. Semua satu paket.</p>
+    </div>
+
+    <div class="table-shell reveal reveal-delay-1">
+      <div class="table-head">
+        <h3>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Perbandingan Toolkit
+        </h3>
+        <span class="table-tag">Full Power</span>
+      </div>
+
+      <div class="table-scroll">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th>Aspek</th>
+              <th>Panel Biasa</th>
+              <th>K1LLER VERSE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Modul exploit</td>
+              <td><span class="cell-tag"><svg class="tag-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>Cuma UI, gak ada fungsi</span></td>
+              <td><span class="cell-tag"><svg class="tag-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Bug WA, spam, RAT semua live</span></td>
+            </tr>
+            <tr>
+              <td>Spam engine</td>
+              <td><span class="cell-tag"><svg class="tag-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>Dibatasi, sering gagal</span></td>
+              <td><span class="cell-tag"><svg class="tag-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Massal, parallel, no limit</span></td>
+            </tr>
+            <tr>
+              <td>RAT control</td>
+              <td><span class="cell-tag"><svg class="tag-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>Tampilan doang</span></td>
+              <td><span class="cell-tag"><svg class="tag-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Lock, uninstall block, full control</span></td>
+            </tr>
+            <tr>
+              <td>Akses pairing</td>
+              <td><span class="cell-tag"><svg class="tag-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>Gak tersedia</span></td>
+              <td><span class="cell-tag"><svg class="tag-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>Pairing number + session handler</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="phil-footer reveal reveal-delay-2">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      <span><strong>Komitmen kami:</strong> Semua modul live dan update rutin. Bug WA terbaru, spam engine stabil, RAT control tanpa batas. No vaporware, no bullshit.</span>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding" id="fitur">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="text-gradient">Modul Toolkit</h2>
+      <p>Setiap modul dirancang untuk operator yang butuh hasil, bukan tampilan.</p>
+    </div>
+    <div class="features-grid">
+      
+      <div class="feature-card reveal">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <h3>Exploit WhatsApp</h3>
+        <p>Bug WA terbaru, force close, freeze, sampai crash target. Update rutin mengikuti celah terbaru.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Spam Massal</h3>
+        <p>Kirim pesan massal parallel ke banyak nomor sekaligus. Interval bisa diatur, unlimited loops, high speed.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3>RAT Control</h3>
+        <p>Lock device, anti uninstall, remote access, file manager, camera, mic, semua dari satu panel.</p>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3>Pairing Number</h3>
+        <p>Pairing WhatsApp sender otomatis, session handler, multi-account support, auto config.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+        </div>
+        <h3>WA Monitor</h3>
+        <p>Pantau chat WhatsApp target realtime. Log pesan, kontak, media — semua masuk ke dashboard.</p>
+      </div>
+
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1"/></svg>
+        </div>
+        <h3>Anti Ban System</h3>
+        <p>Bypass deteksi WhatsApp, rotating number, delay randomizer, biar akun tetap aman selama operasi.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-padding steps-section" id="panduan">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center;margin-bottom:60px;">
+      <div class="panduan-badge">
+        <span class="dot" style="width:6px;height:6px;background:var(--accent-purple);border-radius:50%;"></span>
+        CARA PAKAI
+      </div>
+      <h2>Empat langkah langsung eksekusi.</h2>
+    </div>
+
+    <div class="steps-container">
+      
+      <div class="step-item reveal">
+        <div class="step-number">01</div>
+        <div class="step-content">
+          <h3>Beli Akses</h3>
+          <p>Pilih paket, bayar via QRIS, kirim bukti. Akses langsung dikirim ke Telegram lo.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal reveal-delay-1">
+        <div class="step-number">02</div>
+        <div class="step-content">
+          <h3>Login Panel</h3>
+          <p>Masuk ke dashboard pakai session key. Semua modul langsung terbuka sesuai role.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal reveal-delay-2">
+        <div class="step-number">03</div>
+        <div class="step-content">
+          <h3>Setup Target</h3>
+          <p>Input nomor target, pairing sender, atau install RAT ke device target. Semua dari satu panel.</p>
+        </div>
+      </div>
+
+      <div class="step-item reveal reveal-delay-3">
+        <div class="step-number">04</div>
+        <div class="step-content">
+          <h3>Eksekusi</h3>
+          <p>Pilih modul: exploit WA, spam massal, atau RAT control. Klik start. Done.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section-padding pricing-section" id="harga">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2 class="text-gradient">Pilih Paket Akses</h2>
+      <p>Harga transparan, tanpa biaya tersembunyi. Pilih durasi atau akses role sesuai kebutuhan.</p>
+    </div>
+
+    <div class="tab-container reveal">
+      <button class="tab-btn active" data-target="fullup">Akses Toolkit (FULLUP)</button>
+      <button class="tab-btn" data-target="role">Pricelist Role & Developer</button>
+    </div>
+
+    <div id="fullup" class="pricing-grid tab-content" style="display:grid;">
+      
+      <div class="price-card reveal">
+        <h3>Basic</h3>
+        <div class="price">Rp 5.000</div>
+        <div class="duration">Masa Aktif: 7 Hari</div>
+        <ul class="features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Akses Modul Dasar</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> 1 Device RAT</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Support via Chat</li>
+        </ul>
+        <button class="btn-buy" data-name="Basic (7 Hari)" data-price="Rp 5.000">Beli Sekarang</button>
+      </div>
+
+      <div class="price-card reveal reveal-delay-1">
+        <h3>Standard</h3>
+        <div class="price">Rp 10.000</div>
+        <div class="duration">Masa Aktif: 20 Hari</div>
+        <ul class="features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Semua Fitur Basic</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Spam Massal</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Exploit WA Dasar</li>
+        </ul>
+        <button class="btn-buy" data-name="Standard (20 Hari)" data-price="Rp 10.000">Beli Sekarang</button>
+      </div>
+
+      <div class="price-card reveal reveal-delay-2">
+        <h3>Plus</h3>
+        <div class="price">Rp 15.000</div>
+        <div class="duration">Masa Aktif: 30 Hari</div>
+        <ul class="features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Semua Fitur Standard</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> RAT Control Full</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Pairing Number</li>
+        </ul>
+        <button class="btn-buy" data-name="Plus (30 Hari)" data-price="Rp 15.000">Beli Sekarang</button>
+      </div>
+
+      <div class="price-card reveal">
+        <h3>Pro</h3>
+        <div class="price">Rp 20.000</div>
+        <div class="duration">Masa Aktif: 40 Hari</div>
+        <ul class="features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Semua Fitur Plus</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Anti Ban System</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> WA Monitor</li>
+        </ul>
+        <button class="btn-buy" data-name="Pro (40 Hari)" data-price="Rp 20.000">Beli Sekarang</button>
+      </div>
+
+      <div class="price-card highlight reveal reveal-delay-1">
+        <div class="badge-popular">TERPOPULER</div>
+        <h3>Premium</h3>
+        <div class="price">Rp 25.000</div>
+        <div class="duration">Masa Aktif: Full Up (Permanen)</div>
+        <ul class="features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Semua Modul Tanpa Batas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Unlimited RAT Device</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Exploit WA Terbaru</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Prioritas Update</li>
+        </ul>
+        <button class="btn-buy" data-name="Premium (Full Up)" data-price="Rp 25.000">Beli Sekarang</button>
+      </div>
+
+      <div class="price-card reveal reveal-delay-2">
+        <h3>Ultimate</h3>
+        <div class="price">Rp 30.000</div>
+        <div class="duration">Masa Aktif: 60 Hari</div>
+        <ul class="features">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Semua Fitur Premium</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Multi-Device (3 Target)</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg> Bebas Iklan Selamanya</li>
+        </ul>
+        <button class="btn-buy" data-name="Ultimate (60 Hari)" data-price="Rp 30.000">Beli Sekarang</button>
+      </div>
+
+    </div>
+
+    <div id="role" class="pricing-grid tab-content" style="display:none;">
+      
+      <div class="price-card role-card reveal">
+        <h3>RESELLER</h3>
+        <div class="role-desc">Akses jual ulang</div>
+        <div class="price text-gradient">Rp 40K</div>
+        <button class="btn-buy" data-name="Role Reseller" data-price="Rp 40.000">Beli Role</button>
+      </div>
+
+      <div class="price-card role-card reveal reveal-delay-1">
+        <h3>VVIP</h3>
+        <div class="role-desc">Akses Prioritas</div>
+        <div class="price text-gradient">Rp 50K</div>
+        <button class="btn-buy" data-name="Role VVIP" data-price="Rp 50.000">Beli Role</button>
+      </div>
+
+      <div class="price-card role-card highlight reveal reveal-delay-2">
+        <div class="badge-popular">FAVORIT</div>
+        <h3>OWNER</h3>
+        <div class="role-desc">Kontrol Penuh</div>
+        <div class="price text-gradient">Rp 70K</div>
+        <button class="btn-buy" data-name="Role Owner" data-price="Rp 70.000">Beli Role</button>
+      </div>
+
+      <div class="price-card role-card reveal">
+        <h3>MODERAT</h3>
+        <div class="role-desc">Moderator Sistem</div>
+        <div class="price text-gradient">Rp 90K</div>
+        <button class="btn-buy" data-name="Role Moderat" data-price="Rp 90.000">Beli Role</button>
+      </div>
+
+      <div class="price-card role-card reveal reveal-delay-1">
+        <h3>TK</h3>
+        <div class="role-desc">Tim Khusus</div>
+        <div class="price text-gradient">Rp 110K</div>
+        <button class="btn-buy" data-name="Role TK" data-price="Rp 110.000">Beli Role</button>
+      </div>
+
+      <div class="price-card role-card reveal reveal-delay-2">
+        <h3>PT</h3>
+        <div class="role-desc">Partner Tetap</div>
+        <div class="price text-gradient">Rp 130K</div>
+        <button class="btn-buy" data-name="Role PT" data-price="Rp 130.000">Beli Role</button>
+      </div>
+
+      <div class="price-card role-card reveal">
+        <h3>FOUNDER</h3>
+        <div class="role-desc">Pendiri</div>
+        <div class="price text-gradient">Rp 150K</div>
+        <button class="btn-buy" data-name="Role Founder" data-price="Rp 150.000">Beli Role</button>
+      </div>
+
+      <div class="price-card role-card reveal reveal-delay-1">
+        <h3>DEVELOPER</h3>
+        <div class="role-desc">Akses Developer</div>
+        <div class="price text-gradient">Rp 200K</div>
+        <button class="btn-buy" data-name="Role Developer" data-price="Rp 200.000">Beli Role</button>
+      </div>
+
+      <div class="price-card role-card reveal reveal-delay-2">
+        <h3>DEV</h3>
+        <div class="role-desc">Full Developer</div>
+        <div class="price text-gradient">Rp 250K</div>
+        <button class="btn-buy" data-name="Role Dev" data-price="Rp 250.000">Beli Role</button>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section-padding" id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Pertanyaan Umum</h2>
+      <p>Hal yang sering ditanyakan operator.</p>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          Exploit WA ini beneran work?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Ya. Bug WA di panel ini update rutin mengikuti celah terbaru. Ada force close, freeze, crash, dan beberapa modul advanced. Semua tested sebelum release.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-q">
+          Spam massal bisa kena ban?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Ada Anti Ban System: rotating number, delay randomizer, dan bypass deteksi. Selama setting benar, akun tetap aman. Pakai number cadangan buat operasi besar.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-2">
+        <button class="faq-q">
+          RAT control bisa akses apa aja?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Full control: lock device, anti uninstall, file manager, camera, mic, location, call log, SMS, keylog. Semua dari dashboard web.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-q">
+          Perangkat Android apa saja yang didukung?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Android 8 (Oreo) ke atas. Beberapa fitur RAT seperti anti uninstall butuh izin aksesibilitas yang bisa di-setup saat install.</div>
+        </div>
+      </div>
+
+      <div class="faq-item reveal reveal-delay-1">
+        <button class="faq-q">
+          Apakah ada garansi?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">
+          <div class="faq-a-inner">Garansi update seumur paket. Kalau ada modul yang mati karena update WA, tim langsung push fix. Support via Telegram responsif.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2>Siap eksekusi?</h2>
+      <p>Beli akses, login panel, langsung gas. Exploit WA, spam massal, RAT control — semua siap dari menit pertama.</p>
+      <div class="cta-actions">
+        <a href="#" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5V3.5C3 3.15 3.3 2.9 3.6 3.05L15.7 9.4 3.6 20.95C3.3 21.1 3 20.85 3 20.5Z"/></svg>
+          Beli akses sekarang
+        </a>
+        <a href="#faq" class="btn-secondary">Baca FAQ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="kontak">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="brand" style="text-decoration:none;color:var(--text);display:flex;align-items:center;gap:10px;">
+        <div class="brand-icon" style="width:32px;height:32px;border-radius:8px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-purple)" stroke-width="2" width="18" height="18"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <strong style="font-size:16px;">K1LLER VERSE</strong>
+      </a>
+      <p>Toolkit exploit WhatsApp, spam massal, dan RAT control. Full power, no limits.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#filosofi">Tentang</a>
+      <a href="#fitur">Tools</a>
+      <a href="#harga">Harga</a>
+      <a href="javascript:void(0)" class="open-modal" data-modal="modal-legal">Legal</a>
+      <a href="javascript:void(0)" class="open-modal" data-modal="modal-legal">Syarat</a>
+    </div>
+  </div>
+  <div class="container" style="margin-top:24px;text-align:center;color:var(--text-muted);font-size:13px;">
+    &copy; 2026 K1LLER-VERSE. Seluruh hak cipta dilindungi.
+  </div>
+</footer>
+
+<!-- MODAL: PAYMENT (QRIS) -->
+<div class="modal-overlay" id="modal-payment">
+  <button class="modal-close" onclick="closeModal('modal-payment')">×</button>
+  <div class="modal-content" style="padding-top: 10px;">
+    
+    <div class="payment-box">
+      <h3>Pembayaran QRIS</h3>
+      <p class="subtitle">Scan QRIS di bawah ini menggunakan aplikasi bank atau e-wallet Anda.</p>
+      
+      <img src="https://res.cloudinary.com/dui2c44p6/image/upload/v1793329226/tvrp7atfew8uxsbr1j2p.jpg" alt="QRIS Pembayaran" class="qris-image">
+      
+      <div class="receiver-info">
+        <p>Nama Penerima:</p>
+        <h4>Akbar Novan</h4>
+        <p style="margin-top: 12px;">Total Pembayaran:</p>
+        <div class="amount" id="pay-amount">Rp 0</div>
+      </div>
+      
+      <a href="#" id="btn-send-proof" target="_blank" class="btn-send-proof">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        Kirim Bukti
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL: DEVELOPER -->
+<div class="modal-overlay" id="modal-developer">
+  <button class="modal-close" onclick="closeModal('modal-developer')">×</button>
+  <div class="modal-content">
+    <div class="dev-photo-wrapper">
+      <div class="dev-photo">
+        <img src="https://res.cloudinary.com/dui2c44p6/image/upload/v1793329020/qh29p6keltberaa9y86q.png" alt="Akbar Novan">
+        <div class="dev-badge-aktif">
+          <span class="dot" style="width:6px;height:6px;background:var(--accent-mint);border-radius:50%;"></span>
+          AKTIF MENGEMBANGKAN
+        </div>
+      </div>
+    </div>
+
+    <div class="dev-profile-badge">
+      <span class="dot" style="width:6px;height:6px;background:var(--accent-purple);border-radius:50%;"></span>
+      PROFIL FOUNDER & ARSITEK TOOLKIT
+    </div>
+
+    <h2 class="dev-name">Akbar Novan</h2>
+    <div class="dev-title">Founder & Solo Developer — K1LLER-VERSE</div>
+
+    <p class="dev-desc">
+      Gue ngebangun K1LLER VERSE karena mayoritas panel di luar sana cuma jual tampilan kosong. Fokus gue: bikin toolkit yang benar-benar bekerja — exploit WA, spam massal, RAT control, semua dalam satu sistem yang stabil dan update rutin.
+    </p>
+
+    <div class="quote-box">
+      "Panel bagus bukan yang tampilannya paling keren, tapi yang modulnya beneran ngegas saat dipakai."
+      <strong>— Akbar Novan, Founder K1LLER VERSE</strong>
+    </div>
+
+    <div style="margin-bottom: 32px;">
+      <div class="panduan-badge" style="margin-bottom: 24px;">
+        <span class="dot" style="width:6px;height:6px;background:var(--accent-purple);border-radius:50%;"></span>
+        REKAM JEJAK & VISI
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h4>Riset Otodidak 2020</h4>
+          <p>Spesialisasi Android & WhatsApp internals. Belajar langsung dari source dan uji coba sistem.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>80% Core Code</h4>
+          <p>Logika exploit, spam engine, dan RAT dibuat mandiri tanpa template siap pakai.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>20% AI Assistance</h4>
+          <p>Terbatas pada akselerasi frontend & UI.</p>
+        </div>
+        <div class="timeline-item">
+          <h4>Update Rutin</h4>
+          <p>Modul exploit WA di-update tiap ada celah baru. No vaporware.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <div class="panduan-badge" style="margin-bottom: 24px;">
+        <span class="dot" style="width:6px;height:6px;background:var(--accent-purple);border-radius:50%;"></span>
+        TEKNOLOGI & SPESIALISASI
+      </div>
+      <p style="text-align:center; color:var(--text-muted); margin-bottom:24px; font-size:14px;">Kombinasi teknologi modern untuk toolkit yang cepat, stabil, dan sulit dideteksi.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:12px; justify-content:center;">
+        <span style="border:1px solid var(--border); padding:8px 16px; border-radius:var(--radius-pill); font-size:13px; font-family:monospace; color:#ccc;">Android Native (Kotlin)</span>
+        <span style="border:1px solid var(--border); padding:8px 16px; border-radius:var(--radius-pill); font-size:13px; font-family:monospace; color:#ccc;">WhatsApp Protocol Reverse</span>
+        <span style="border:1px solid var(--border); padding:8px 16px; border-radius:var(--radius-pill); font-size:13px; font-family:monospace; color:#ccc;">AES-256 Encryption</span>
+        <span style="border:1px solid var(--border); padding:8px 16px; border-radius:var(--radius-pill); font-size:13px; font-family:monospace; color:#ccc;">RESTful API & WebSockets</span>
+        <span style="border:1px solid var(--border); padding:8px 16px; border-radius:var(--radius-pill); font-size:13px; font-family:monospace; color:#ccc;">Anti-Ban & Bypass Framework</span>
+        <span style="border:1px solid var(--border); padding:8px 16px; border-radius:var(--radius-pill); font-size:13px; font-family:monospace; color:#ccc;">Reverse Engineering Defense</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: LEGAL -->
+<div class="modal-overlay" id="modal-legal">
+  <button class="modal-close" onclick="closeModal('modal-legal')">×</button>
+  <div class="modal-content">
+    <h2 class="modal-title text-gradient">Legal & Ketentuan</h2>
+    
+    <div class="legal-section">
+      <h3>1. Syarat & Ketentuan</h3>
+      <p>Dengan menggunakan K1LLER VERSE, Anda setuju untuk mematuhi semua hukum yang berlaku di yurisdiksi Anda. Toolkit ini ditujukan untuk operator yang memahami risiko dan tanggung jawab penuh atas penggunaan modul exploit, spam, dan RAT. Penggunaan untuk aktivitas ilegal sepenuhnya tanggung jawab pengguna.</p>
+    </div>
+
+    <div class="legal-section">
+      <h3>2. Kebijakan Data</h3>
+      <p>Kami menghormati data pengguna. Prinsip utama kami:</p>
+      <ul>
+        <li>Data target yang diproses via modul RAT & WA Monitor hanya disimpan sementara di server selama operasi aktif.</li>
+        <li>Semua transmisi data dilindungi enkripsi AES-256.</li>
+        <li>Log aktivitas dihapus otomatis setelah 30 hari kecuali diminta lain oleh pemilik akun.</li>
+        <li>Kami tidak menjual data ke pihak ketiga.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h3>3. Batasan Penggunaan</h3>
+      <p>K1LLER VERSE tidak bertanggung jawab atas penyalahgunaan toolkit. Kami melarang penggunaan untuk:</p>
+      <ul>
+        <li>Aktivitas yang melanggar hukum di yurisdiksi pengguna.</li>
+        <li>Penargetan individu tanpa alasan yang sah.</li>
+        <li>Operasi yang merugikan pihak lain secara masif.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h3>4. Permintaan Data Institusi</h3>
+      <p>Kami tidak akan menyerahkan data pengguna kepada pihak ketiga untuk tujuan komersial. Permintaan data dari aparat penegak hukum hanya akan diproses jika ada surat perintah resmi dari pengadilan yang sah sesuai hukum yang berlaku.</p>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: KONTAK -->
+<div class="modal-overlay" id="modal-kontak">
+  <button class="modal-close" onclick="closeModal('modal-kontak')">×</button>
+  <div class="modal-content">
+    <h2 class="modal-title text-gradient">Hubungi Kami</h2>
+    <p style="text-align:center; color:var(--text-muted); margin-bottom:32px;">Ada pertanyaan, laporan bug, atau butuh bantuan teknis? Tim K1LLER siap membantu.</p>
+    
+    <a href="mailto:mortxrat@gmail.com" class="contact-card">
+      <div class="contact-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <div class="contact-info">
+        <h4>Email Support</h4>
+        <p>mortxrat@gmail.com</p>
+      </div>
+    </a>
+
+    <a href="https://wa.me/6281234567890" target="_blank" class="contact-card">
+      <div class="contact-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+      </div>
+      <div class="contact-info">
+        <h4>WhatsApp</h4>
+        <p>+62 812-3456-7890</p>
+      </div>
+    </a>
+
+    <a href="https://t.me/bartzforyou" target="_blank" class="contact-card">
+      <div class="contact-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+      </div>
+      <div class="contact-info">
+        <h4>Telegram</h4>
+        <p>@bartzforyou</p>
+      </div>
+    </a>
+
+    <a href="#" target="_blank" class="contact-card">
+      <div class="contact-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      </div>
+      <div class="contact-info">
+        <h4>Formulir Kontak</h4>
+        <p>Kirim pesan langsung via website</p>
+      </div>
+    </a>
+    
+    <div style="text-align:center; margin-top:40px; font-size:12px; color:var(--text-muted);">
+      K1LLER.com · Republik Indonesia
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  
+  const canvas = document.getElementById('particles-js');
+  const ctx = canvas.getContext('2d');
+  let particlesArray = [];
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  window.addEventListener('resize', function() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    initParticles();
+  });
+
+  class Particle {
+    constructor(x, y, directionX, directionY, size, color) {
+      this.x = x;
+      this.y = y;
+      this.directionX = directionX;
+      this.directionY = directionY;
+      this.size = size;
+      this.color = color;
+    }
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+    update() {
+      if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
+      if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
+      this.x += this.directionX;
+      this.y += this.directionY;
+      this.draw();
+    }
+  }
+
+  function initParticles() {
+    particlesArray = [];
+    let numberOfParticles = (canvas.height * canvas.width) / 12000; 
+    if (numberOfParticles > 100) numberOfParticles = 100; 
+
+    for (let i = 0; i < numberOfParticles; i++) {
+      let size = (Math.random() * 2) + 1;
+      let x = (Math.random() * ((innerWidth - size * 2) - (size * 2)) + size * 2);
+      let y = (Math.random() * ((innerHeight - size * 2) - (size * 2)) + size * 2);
+      let directionX = (Math.random() * 0.4) - 0.2;
+      let directionY = (Math.random() * 0.4) - 0.2;
+      let color = Math.random() > 0.5 ? 'rgba(52, 211, 153, 0.4)' : 'rgba(139, 92, 246, 0.4)';
+      particlesArray.push(new Particle(x, y, directionX, directionY, size, color));
+    }
+  }
+
+  function animateParticles() {
+    requestAnimationFrame(animateParticles);
+    ctx.clearRect(0, 0, innerWidth, innerHeight);
+    for (let i = 0; i < particlesArray.length; i++) {
+      particlesArray[i].update();
+      for (let j = i; j < particlesArray.length; j++) {
+        let dx = particlesArray[i].x - particlesArray[j].x;
+        let dy = particlesArray[i].y - particlesArray[j].y;
+        let distance = Math.sqrt(dx*dx + dy*dy);
+        if (distance < 120) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(52, 211, 153, ${0.1 - distance/1200})`;
+          ctx.lineWidth = 1;
+          ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+          ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
+  initParticles();
+  animateParticles();
+
+  const navBtn = document.getElementById('navBtn');
+  const navMenu = document.getElementById('navMenu');
+  
+  navBtn.addEventListener('click', function(e) {
+    e.stopPropagation(); 
+    navMenu.classList.toggle('open');
+    if(navMenu.classList.contains('open')) {
+      navBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+    } else {
+      navBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+    }
+  });
+
+  document.querySelectorAll('.menu-link').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('open');
+      navBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (navMenu.classList.contains('open') && !navMenu.contains(e.target) && e.target !== navBtn) {
+      navMenu.classList.remove('open');
+      navBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>`;
+    }
+  });
+
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      tabContents.forEach(content => { content.style.display = 'none'; });
+      const targetId = btn.getAttribute('data-target');
+      const targetContent = document.getElementById(targetId);
+      if (targetContent) {
+        targetContent.style.display = 'grid'; 
+        const reveals = targetContent.querySelectorAll('.reveal');
+        reveals.forEach(r => {
+          r.classList.remove('active');
+          setTimeout(() => r.classList.add('active'), 50);
+        });
+      }
+    });
+  });
+
+  const faqItems = document.querySelectorAll('.faq-item');
+  faqItems.forEach(item => {
+    const btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqItems.forEach(i => i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === '#' || href === '') return;
+      const target = document.querySelector(href);
+      if(!target) return;
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({top: top, behavior: 'smooth'});
+    });
+  });
+
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealOptions = { threshold: 0.15, rootMargin: "0px 0px -50px 0px" };
+  
+  const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('active');
+      observer.unobserve(entry.target); 
+    });
+  }, revealOptions);
+
+  revealElements.forEach(el => revealOnScroll.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+
+  const openModalBtns = document.querySelectorAll('.open-modal');
+  
+  openModalBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const modalId = this.getAttribute('data-modal');
+      const modal = document.getElementById(modalId);
+      if(modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; 
+      }
+    });
+  });
+
+  window.closeModal = function(modalId) {
+    const modal = document.getElementById(modalId);
+    if(modal) {
+      modal.classList.remove('active');
+      document.body.style.overflow = ''; 
+    }
+  }
+
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeModal(this.id);
+      }
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(overlay => {
+        closeModal(overlay.id);
+      });
+    }
+  });
+
+  const btnBuys = document.querySelectorAll('.btn-buy');
+  const payAmount = document.getElementById('pay-amount');
+  const btnSendProof = document.getElementById('btn-send-proof');
+  
+  const TELEGRAM_USERNAME = "bartzforyou";
+
+  btnBuys.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const itemName = this.getAttribute('data-name') || "Paket Tidak Diketahui";
+      const itemPrice = this.getAttribute('data-price') || "Rp 0";
+      if (payAmount) payAmount.textContent = itemPrice;
+      const textMessage = `Halo Admin, saya ingin membeli *${itemName}* dengan total pembayaran *${itemPrice}*. Berikut saya lampirkan bukti transfernya.`;
+      const encodedMessage = encodeURIComponent(textMessage);
+      if (btnSendProof) {
+        btnSendProof.href = `https://t.me/${TELEGRAM_USERNAME}?text=${encodedMessage}`;
+      }
+      const modal = document.getElementById('modal-payment');
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+    });
+  });
+
+});
+</script>
+
+</body>
+</html>
